@@ -44,3 +44,13 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+
+### Clase 11
+* Preparación del entorno
+* Creación del proyecto react con TS
+* Tipos básicos de TS
+
+### Clase 12: objetos literales e interfaces
+### Clase 13: funciones, retorno y argumentos
+ 
