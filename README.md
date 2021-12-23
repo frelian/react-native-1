@@ -56,3 +56,4 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 ### Clase 14: React, Hook - useState
 ### Clase 15: React custom Hook - useCounter
 ### Clase 16: Componente Login - Antesala al useReader
+### Clase 17: Hook useReducer 
