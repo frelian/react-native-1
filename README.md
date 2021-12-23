@@ -53,4 +53,5 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 ### Clase 12: objetos literales e interfaces
 ### Clase 13: funciones, retorno y argumentos
-### Clase 14: Ract, Hook - useState
+### Clase 14: React, Hook - useState
+### Clase 15: React custom Hook - useCounter
