@@ -15,7 +15,14 @@ const initialState: AuthState = {
     nombre: ''
 }
 
-type AuthAction = { type: 'logout' }
+type LoginPayload = {
+    username: string;
+    nombre: string;
+}
+
+type AuthAction = 
+    | { type: 'logout' }
+    | { type: 'login', payload: LoginPayload };
 
 // Retorno una interfaz llamada AuthState
 // Para que sea un reducer 
@@ -30,7 +37,15 @@ const authReducer = (state: AuthState, action: AuthAction): AuthState => {
                 nombre: '',
                 username: ''
             }
-    
+        
+        case 'login':
+            const { nombre, username } = action.payload;
+            return {
+                validando: false,
+                token: 'ABC123',
+                nombre: nombre,
+                username: username
+            }
         default:
             return state;
     }
@@ -40,7 +55,7 @@ export const Login = () => {
 
     // const [state, dispatch] = useReducer(authReducer, initialState);
     // Como el state es un objeto de tipo AuthState, puedo des-estructurarlo
-    const [{ validando }, dispatch] = useReducer(authReducer, initialState);
+    const [{ validando, token, nombre }, dispatch] = useReducer(authReducer, initialState);
 
     console.log(validando, dispatch)
 
@@ -49,6 +64,20 @@ export const Login = () => {
             dispatch({ type: 'logout' })
         }, 1500);
     }, [])
+
+    const login = () => {
+        dispatch({ 
+            type: 'login', 
+            payload: {
+                nombre: 'Julian',
+                username: 'iamjulian'
+            }
+        })
+    }
+
+    const logout = () => { 
+        dispatch({ type: 'logout' }) 
+    }
 
     if ( validando ) {
         return (
@@ -64,25 +93,36 @@ export const Login = () => {
     return (
         <>
             <h3>Login</h3>
-   
-            <div className="alert alert-danger">
-                No autenticado
-            </div>
 
-            <div className="alert alert-success">
-                Autenticado
-            </div>
+            {
+                ( token ) 
+                    ? <div className="alert alert-success">Autenticado como: { nombre }</div>
+                    : <div className="alert alert-danger">No autenticado</div>
 
-            <button 
-                className="btn btn-primary"
-            >
-                Login
-            </button>
-            <button 
-                className="btn btn-light"
-            >
-                Loout
-            </button>
+            }
+
+            {
+                ( token )
+                ? (
+                    <button 
+                        className="btn btn-light"
+                        onClick={ logout }
+                    >
+                        {/*
+                            Es lo mismo que hacer: onClick={ () => logout() } 
+                        */}
+                        Logout
+                    </button>
+                )
+                : (
+                    <button 
+                        className="btn btn-primary"
+                        onClick={ login }
+                    >
+                    Login
+                    </button>
+                )
+            }
         </>
     )
 }

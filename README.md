@@ -58,3 +58,4 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 ### Clase 16: Componente Login - Antesala al useReader
 ### Clase 17: Hook useReducer
 ### Clase 18: AuthReducer - useEffect (Lanzador de eventos)
+### Clase 19: Login y Logout
